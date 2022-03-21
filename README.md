@@ -13,4 +13,4 @@ deactivate
 ````
 
 ## License
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/pedro-carmine/networking-monitoring-raspberry/blob/main/LICENSE)
