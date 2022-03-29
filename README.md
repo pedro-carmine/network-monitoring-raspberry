@@ -1,5 +1,9 @@
 # Network Monitoring Tool Project for Rasperry Pi
 
+## Creating Virtual Environment
+```python -m venv venv
+```
+
 ## Activating Virtual Environment
 
 ```bash 
