@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/Users/pehcarmine/popen/venv"
+VIRTUAL_ENV="/Users/pehcarmine/Repos/networking-monitoring-raspberry/venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

@@ -14,3 +14,6 @@ deactivate
 
 ## License
 [MIT](https://github.com/pedro-carmine/networking-monitoring-raspberry/blob/main/LICENSE)
+
+## External Library:
+[pingparser](https://github.com/ssteinerx/pingparser)

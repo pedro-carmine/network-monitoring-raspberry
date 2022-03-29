@@ -1,4 +1,4 @@
-#!/Users/pehcarmine/popen/venv/bin/python3
+#!/Users/pehcarmine/Repos/networking-monitoring-raspberry/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

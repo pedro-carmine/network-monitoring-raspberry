@@ -1,13 +1,15 @@
-from concurrent.futures import process
 import os
-import time
+import pingparser
+from collections import OrderedDict
 
-process = os.popen('ping -c 3 192.168.1.1')
-
+process = os.popen('ping -c 5 192.168.1.1')
 
 output = process.read()
 
-t = time.localtime()
-current_time = time.strftime("%H:%M:%S", t)
+results = pingparser.parse(output)
 
-print(f"{output}\n{current_time}")
+# get a dictionary from the result
+ordered_dict = OrderedDict(results.items())
+
+print(results)
+print(ordered_dict['host'])
