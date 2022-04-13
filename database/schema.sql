@@ -11,8 +11,8 @@ CREATE TABLE raspberry(
 
 CREATE TABLE data(
     id VARCHAR (12),
-    collected_at_date DATE NOT NULL , --DEFAULT CURRENT_DATE
-    collected_at_time TIME NOT NULL,
+    collected_at_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    collected_at_time TIME NOT NULL DEFAULT CURRENT_TIME,
     max INTEGER,
     min INTEGER,
     avg INTEGER,
