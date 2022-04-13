@@ -11,14 +11,15 @@ CREATE TABLE raspberry(
 
 CREATE TABLE data(
     id VARCHAR (12),
-    collected_at DATE NOT NULL , --DEFAULT CURRENT_DATE
+    collected_at_date DATE NOT NULL , --DEFAULT CURRENT_DATE
+    collected_at_time TIME NOT NULL,
     max INTEGER,
     min INTEGER,
     avg INTEGER,
     CHECK (max >= 0),
     CHECK (min >= 0),
     CHECK (avg >= 0),
-    CHECK (collected_at <= CURRENT_DATE),
-    PRIMARY KEY(id, collected_at),
+    CHECK (collected_at_date <= CURRENT_DATE),
+    PRIMARY KEY(id, collected_at_date, collected_at_time),
     FOREIGN KEY (id) REFERENCES raspberry(id)
 );
