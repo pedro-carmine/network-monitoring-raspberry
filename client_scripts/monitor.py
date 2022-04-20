@@ -8,7 +8,7 @@ MAX_PING = 'maxping'
 MIN_PING = 'minping'
 AVG_PING = 'avgping'
 
-os.popen('ping -c 1 192.168.1.1') # wakeup ping
+os.popen('ping -c 1 192.168.1.1')  # wakeup ping
 
 process = os.popen('ping -c 5 192.168.1.1')
 now = datetime.datetime.now()
