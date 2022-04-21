@@ -2,6 +2,16 @@ DROP TABLE IF EXISTS raspberry CASCADE;
 DROP TABLE IF EXISTS facts CASCADE;
 DROP TABLE IF EXISTS d_date CASCADE;
 
+CREATE TABLE d_date (
+    id_date INTEGER,
+    day INTEGER NOT NULL,
+    week_day VARCHAR(9) NOT NULL,
+    week INTEGER NOT NULL,
+    month VARCHAR(9) NOT NULL,
+    year INTEGER NOT NULL,
+    PRIMARY KEY(id_date)
+);
+
 CREATE TABLE raspberry(
     id_pi VARCHAR(12),
     model VARCHAR(20),
@@ -20,16 +30,6 @@ CREATE TABLE facts(
     PRIMARY KEY (id_pi, id_date, hour),
     FOREIGN KEY (id_pi) REFERENCES raspberry(id_pi),
     FOREIGN KEY (id_date) REFERENCES d_date(id_date)
-);
-
-CREATE TABLE d_date (
-    id_date INTEGER,
-    day INTEGER NOT NULL,
-    week_day VARCHAR(9) NOT NULL,
-    week INTEGER NOT NULL,
-    month VARCHAR(9) NOT NULL,
-    year INTEGER NOT NULL,
-    PRIMARY KEY(id_date)
 );
 
 CREATE OR REPLACE FUNCTION load_d_date() RETURNS VOID AS
