@@ -1,11 +1,12 @@
 import os
+import getpass
 import socket
 import pingparser
 import psycopg2
 import datetime
 
 id_pi = socket.gethostname()
-print(id_pi)
+user = getpass.getuser()
 MAX_PING = 'maxping'
 MIN_PING = 'minping'
 AVG_PING = 'avgping'
@@ -37,6 +38,7 @@ try:
     sql = f"INSERT INTO facts (id_pi, max, min, avg, hour) VALUES ('{id_pi}', {max}, {min}, {avg}, '{time}');"
     cursor.execute(sql, data)
     connection.commit()
+    print(f"Query successfully executed:\n{sql}")
     cursor.close()
 except Exception as e:
     print(f"An error occurred: {e}")
