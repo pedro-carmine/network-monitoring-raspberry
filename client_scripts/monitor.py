@@ -1,9 +1,11 @@
 import os
+import socket
 import pingparser
 import psycopg2
 import datetime
 
-id_pi = 'library'
+id_pi = socket.gethostname()
+print(id_pi)
 MAX_PING = 'maxping'
 MIN_PING = 'minping'
 AVG_PING = 'avgping'
