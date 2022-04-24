@@ -3,3 +3,4 @@
 __pycache__
 venv
 web/node_modules
+web2/node_modules
