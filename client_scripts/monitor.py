@@ -32,7 +32,7 @@ avg = results[AVG_PING]
 connection = None
 
 try:
-    connection = psycopg2.connect("dbname=testdb user=pehcarmine")
+    connection = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = connection.cursor()
     data = (id_pi, max, min, avg, hour)
     sql = f"INSERT INTO facts (id_pi, max, min, avg, hour) VALUES ('{id_pi}', {max}, {min}, {avg}, '{time}');"
