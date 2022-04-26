@@ -13,7 +13,8 @@ try:
     sql = f"SELECT * FROM data WHERE id_pi = '{hostname}'"
     cursor.execute(sql, hostname)
     result = cursor.fetchall
-    print(result)
+    for e in result:
+        print(e)
 except Exception as e:
     print(f"An error occurred: {e}")
 
