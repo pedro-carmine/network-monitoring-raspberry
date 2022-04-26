@@ -32,6 +32,16 @@ CREATE TABLE facts(
     FOREIGN KEY (id_date) REFERENCES d_date(id_date)
 );
 
+CREATE TABLE last_updated(
+    id_pi VARCHAR(12),
+    id_date INTEGER DEFAULT (EXTRACT (YEAR FROM CURRENT_DATE) * 10000
+    + EXTRACT (MONTH FROM CURRENT_DATE) * 100 + EXTRACT(DAY FROM CURRENT_DATE)),
+    hour TIME NOT NULL,
+    PRIMARY KEY (id_pi, id_date, hour),
+    FOREIGN KEY (id_pi) REFERENCES raspberry(id_pi),
+    FOREIGN key (id_date) REFERENCES d_date(id_date)
+);
+
 CREATE OR REPLACE FUNCTION load_d_date() RETURNS VOID AS
 $$
 DECLARE date_value TIMESTAMP;
