@@ -8,7 +8,7 @@ user = getpass.getuser()
 connection = None
 
 try:
-    connection = psycopg2.connect(f"dbname=testdb, host=192.168.1.247")
+    connection = psycopg2.connect(f"host=192.168.1.247, database=testdb")
     cursor = connection.cursor()
     sql = f"SELECT * FROM data WHERE id_pi = '{hostname}'"
     cursor.execute(sql, hostname)
