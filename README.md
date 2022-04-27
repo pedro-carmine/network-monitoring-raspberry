@@ -31,14 +31,14 @@ python -m pip install psycopg2-binary
 - You can edit the script to choose the path of your preference or change the username as your own
 - If all the above requirements are met:
 
-Run the following commands:
+Go inside the `database` folder and run the following commands:
 
 ```bash
-chmod +x database/createdb.bash
+chmod +x createdb.bash
 ```
 
 ```bash
-./database/createdb.bash
+.createdb.bash
 ```
 
 Now the database is created and registered with the Raspberry Pi inside it. To start collecting data edit the file `client_scripts/monitor.py` to ping the desired IP, then you can set the script to run with a crontab job or run it manually.
