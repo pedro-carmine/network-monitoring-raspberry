@@ -1,3 +1,5 @@
+#!/home/pi/Repos/networking-monitoring-raspberry/.venv/bin/python
+
 import os
 import getpass
 import socket
