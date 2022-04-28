@@ -25,11 +25,14 @@ def collect_pending_data(date, hour):
     local_conn = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = local_conn.cursor()
     today = id_date_today()
-    sql = f"""SELECT * FROM facts 
-        WHERE (id_date = {date} AND hour >= '{hour}')
-        OR (id_date > {date} AND id_date < {today})
-        OR (id_date = {today} AND hour <= '{hour_now()}')
-        """
+    if today == date:
+        sql = f"""SELECT * FROM facts 
+            WHERE (id_date = {date} AND hour >= '{hour}')
+            OR (id_date > {date} AND id_date < {today})
+            OR (id_date = {today} AND hour <= '{hour_now()}')
+            """
+    else:
+        sql = f"SELECT * FROM facts WHERE (id_date = {date} AND hour >= '{hour}'"
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
