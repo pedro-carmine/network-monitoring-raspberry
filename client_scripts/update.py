@@ -8,6 +8,9 @@ user = getpass.getuser()
 
 connection = None
 
+def id_date_today():
+    return datetime.datetime.now().strftime('%Y%m%d')
+
 def collect_all_data():
     local_conn = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = local_conn.cursor()
@@ -21,7 +24,12 @@ def collect_all_data():
 def collect_pending_data(date, hour):
     local_conn = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = local_conn.cursor()
-    sql = f"SELECT * FROM facts WHERE id_date >= {date} AND hour >= '{hour}'"
+    today = id_date_today()
+    sql = f"""SELECT * FROM facts 
+        WHERE (id_date = {date} AND hour >= '{hour}')
+        OR (id_date > {date} AND id_date < {today})
+        OR (id_date = {today} AND hour <= '{hour_now()}')
+        """
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
