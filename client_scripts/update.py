@@ -32,7 +32,7 @@ def collect_pending_data(date, hour):
             OR (id_date = {today} AND hour <= '{hour_now()}')
             """
     else:
-        sql = f"SELECT * FROM facts WHERE (id_date = {date} AND hour >= '{hour}'"
+        sql = f"SELECT * FROM facts WHERE id_date = {date} AND hour >= '{hour}'"
     cursor.execute(sql)
     result = cursor.fetchall()
     cursor.close()
