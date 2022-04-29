@@ -25,7 +25,7 @@ def collect_pending_data(date, hour):
     local_conn = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = local_conn.cursor()
     today = id_date_today()
-    if today == date:
+    if today != str(date):
         sql = f"""SELECT * FROM facts 
             WHERE (id_date = {date} AND hour >= '{hour}')
             OR (id_date > {date} AND id_date < {today})
