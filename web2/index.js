@@ -10,7 +10,7 @@ app.use(express.json());
 
 app.get("/data", async (req, res) => {
     try {
-        const allFacts = await pool.query("SELECT * FROM facts");
+        const allFacts = await pool.query("SELECT * FROM data");
         res.send(JSON.stringify(allFacts.rows));
     } catch (err) {
         console.log(err.message);
