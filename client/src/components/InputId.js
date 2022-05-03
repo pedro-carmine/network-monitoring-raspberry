@@ -7,7 +7,7 @@ const InputId = () => {
         event.preventDefault();
         try {
             const body = { pi_id }
-            const response = await fetch(`http://localhost:8080/data/id/${pi_id}`, {
+            const response = await fetch(`data/id/${pi_id}`, {
                 method: "GET"
             });
 

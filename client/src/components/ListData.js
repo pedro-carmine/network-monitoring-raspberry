@@ -6,7 +6,7 @@ const ListData = () => {
 
     const getData = async () => {
       try {
-          const response = await fetch("http://localhost:8080/data");
+          const response = await fetch("/data");
           const jsonData = await response.json();
 
           setData(jsonData);
