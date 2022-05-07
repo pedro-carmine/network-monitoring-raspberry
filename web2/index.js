@@ -28,7 +28,7 @@ app.get("/data/:time", async (req, res) => {
 
 app.get("/data/id/:id", async (req, res) => {
     try {
-        const specificFacts = await pool.query(`SELECT * FROM facts WHERE id_pi = '${req.params.id}' ORDER BY (id_date, hour) DESC`);
+        const specificFacts = await pool.query(`SELECT * FROM facts NATURAL JOIN d_date WHERE id_pi = '${req.params.id}' ORDER BY (id_date, hour) DESC`);
         if (specificFacts.rowCount == 0) {
             res.json("No data found");
         }

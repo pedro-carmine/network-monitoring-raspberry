@@ -3,6 +3,27 @@ import React, { Fragment , useState, useEffect} from "react";
 const ListData = () => {
 
     const [data, setData]  = useState([]);
+    const [pi_id, setDescription] = useState("");
+
+    const refresh = async () => {
+        window.state = "/";
+    }
+
+    const onSubmitForm = async (event) => {
+        event.preventDefault();
+        try {
+            if (pi_id === "") {
+                getData();
+            }
+            else {
+                const emp = [{id_pi: pi_id}];
+                setData(data.filter(({id_pi}) => emp.some(exclude => exclude.id_pi === id_pi)));
+            }
+
+        } catch (error) {
+            console.error(error.message());
+        }
+    }
 
     const getData = async () => {
       try {
@@ -21,8 +42,16 @@ const ListData = () => {
 
     return (
         <Fragment>
-            {" "}
-            <table className="table mt-5">
+            <form className={"d-flex mt-5"} onSubmit={onSubmitForm}>
+                <input
+                    type={"text"}
+                    className={"form-control me-1"}
+                    value={pi_id}
+                    onChange={e => setDescription(e.target.value)}
+                />
+                <button className={"btn btn-outline-primary btn-sm"}>Get Data</button>
+            </form>
+            <table className="table mt-3">
                 <thead>
                     <tr>
                         <th>ID</th>

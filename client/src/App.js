@@ -4,16 +4,20 @@ import './App.css';
 //components
 import InputId from "./components/InputId";
 import ListData from "./components/ListData";
+import NavBar from "./components/NavBar";
+import Sidebar from "./components/sidebar/Sidebar";
 
 function App() {
     return (
-        <Fragment>
+        <div>
             <div className="container">
-                <InputId />
-                <ListData />
+                <NavBar />
             </div>
-        </Fragment>
-    )
-}
+            <div className="container">
+                <Sidebar />
+            </div>
+        </div>
+    );
+};
 
 export default App;
