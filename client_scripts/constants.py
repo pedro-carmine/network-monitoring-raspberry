@@ -1,0 +1,5 @@
+MAX_PING = 'maxping'
+MIN_PING = 'minping'
+AVG_PING = 'avgping'
+SENT = 'sent'
+RECEIVED = 'received'
