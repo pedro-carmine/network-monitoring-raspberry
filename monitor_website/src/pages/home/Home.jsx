@@ -22,19 +22,21 @@ const Home = () => {
     }, []);
 
     const getDate = (params) => {
+        let day = params.row.day;
+        let month = parseInt(params.row.month) - 1; // in the Date format, month uses index, so we need to subtract 1
+        let year = params.row.year;
         return (
-            `${params.row.day}/${params.row.month}/${params.row.year}`
+            new Date(year, month, day)
         );
     };
 
     const columns = [
-        {field: 'id_pi', headerName: 'ID', width: 70},
-        {field: 'max', headerName: 'Max', type: 'number', width: 70},
-        {field: 'min', headerName: 'Min', type: 'number', width: 70},
-        {field: 'avg', headerName: 'Avg', type: 'number', width: 70},
-        {field: 'date', headerName: 'Date', width: 100, valueGetter: getDate, sortable: false},
-        {field: 'id_date', headerName: 'SortByDate', width: 130, hidden: 'true'}
-    ]
+        {field: 'id_pi', headerName: 'ID', headerAlign: 'center', width: 70},
+        {field: 'max', headerName: 'Max', type: 'number', headerAlign: 'center', width: 70},
+        {field: 'min', headerName: 'Min', type: 'number', headerAlign: 'center', width: 70},
+        {field: 'avg', headerName: 'Avg', type: 'number', headerAlign: 'center', width: 70},
+        {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate}
+    ];
 
 
 
