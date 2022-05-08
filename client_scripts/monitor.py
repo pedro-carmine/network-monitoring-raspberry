@@ -6,12 +6,10 @@ import socket
 import pingparser
 import psycopg2
 import datetime
+from constants import *
 
 id_pi = socket.gethostname()
 user = getpass.getuser()
-MAX_PING = 'maxping'
-MIN_PING = 'minping'
-AVG_PING = 'avgping'
 
 os.popen('ping -c 1 192.168.1.1')  # wakeup ping
 
@@ -30,6 +28,8 @@ results = pingparser.parse(output)
 max = results[MAX_PING]
 min = results[MIN_PING]
 avg = results[AVG_PING]
+packets_sent = results[SENT]
+packets_received = results[RECEIVED]
 
 connection = None
 
