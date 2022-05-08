@@ -31,10 +31,10 @@ const Home = () => {
     };
 
     const columns = [
-        {field: 'id_pi', headerName: 'ID', headerAlign: 'center', width: 70},
-        {field: 'max', headerName: 'Max', type: 'number', headerAlign: 'center', width: 70},
-        {field: 'min', headerName: 'Min', type: 'number', headerAlign: 'center', width: 70},
-        {field: 'avg', headerName: 'Avg', type: 'number', headerAlign: 'center', width: 70},
+        {field: 'id_pi', headerName: 'ID', headerAlign: 'center', width: 100},
+        {field: 'max', headerName: 'Max', type: 'number', headerAlign: 'center', width: 80},
+        {field: 'min', headerName: 'Min', type: 'number', headerAlign: 'center', width: 80},
+        {field: 'avg', headerName: 'Avg', type: 'number', headerAlign: 'center', width: 80},
         {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate}
     ];
 
