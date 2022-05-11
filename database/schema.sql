@@ -29,6 +29,8 @@ CREATE TABLE facts(
     max NUMERIC,
     min NUMERIC,
     avg NUMERIC,
+    packets_sent INTEGER,
+    packets_received INTEGER,
     hour TIME NOT NULL,
     PRIMARY KEY (id_pi, id_date, hour),
     FOREIGN KEY (id_pi) REFERENCES raspberry(id_pi),
