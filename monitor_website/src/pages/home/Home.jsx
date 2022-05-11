@@ -1,6 +1,6 @@
 import "./home.css"
 import React, { useState, useEffect } from "react";
-import { DataGrid } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 
 const Home = () => {
     const [data, setData]  = useState([]);
@@ -32,10 +32,13 @@ const Home = () => {
 
     const columns = [
         {field: 'id_pi', headerName: 'ID', headerAlign: 'center', width: 100},
+        {field: 'location', headerName: 'Location', headerAlign: 'center', width: 100},
         {field: 'max', headerName: 'Max', type: 'number', headerAlign: 'center', width: 80},
         {field: 'min', headerName: 'Min', type: 'number', headerAlign: 'center', width: 80},
         {field: 'avg', headerName: 'Avg', type: 'number', headerAlign: 'center', width: 80},
-        {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate}
+        {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate},
+        {field: 'hour', headerName: 'Time', type: 'time', headerAlign: 'center', width: 120},
+        {field: 'ip', headerName: 'IP Address', headerAlign: 'center', width: 100}
     ];
 
 
@@ -46,6 +49,7 @@ const Home = () => {
                 rows={data}
                 columns={columns}
                 id="_id"
+                components={{Toolbar: GridToolbar}}
                 getRowId={(row) => (row.id_pi, row.date, row.hour) }
                 />
         </div>
