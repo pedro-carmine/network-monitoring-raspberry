@@ -30,14 +30,15 @@ min = results[MIN_PING]
 avg = results[AVG_PING]
 packets_sent = results[SENT]
 packets_received = results[RECEIVED]
+packet_loss = results[PACKET_LOSS]
 
 connection = None
 
 try:
     connection = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = connection.cursor()
-    data = (id_pi, max, min, avg, hour)
-    sql = f"INSERT INTO facts (id_pi, max, min, avg, hour) VALUES ('{id_pi}', {max}, {min}, {avg}, '{time}');"
+    data = (id_pi, max, min, avg, packets_sent, packets_received, hour)
+    sql = f"INSERT INTO facts (id_pi, max, min, avg, packets_sent, packets_received, hour) VALUES ('{id_pi}', '{max}', '{min}', '{avg}', '{packets_sent}', '{packets_received}', '{time}');"
     cursor.execute(sql, data)
     connection.commit()
     print(f"Query successfully executed:\n{sql}")
