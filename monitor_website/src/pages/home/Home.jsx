@@ -7,7 +7,7 @@ const Home = () => {
 
     const getData = async () => {
         try {
-            const response = await fetch("/data");
+            const response = await fetch("/data/facts");
             const jsonData = await response.json();
 
             setData(jsonData);
