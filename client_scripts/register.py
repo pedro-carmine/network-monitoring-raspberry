@@ -11,7 +11,7 @@ hostname = socket.gethostname()
 user = getpass.getuser()
 model = input("Raspberry Pi model: ")
 location = input("Raspberry Pi location: ")
-ip = input("Raspberry Pi ip: ")
+ip = get_ip_address()
 
 connection = None
 
