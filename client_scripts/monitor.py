@@ -8,12 +8,16 @@ import psycopg2
 import datetime
 from constants import *
 
+
+def verify_result(number):
+    return 0 if number == 'NaN' else number
+
 id_pi = socket.gethostname()
 user = getpass.getuser()
 
-os.popen('ping -c 1 192.168.1.1')  # wakeup ping
+os.popen('ping -c 1 194.210.223.254')  # wakeup ping
 
-process = os.popen('ping -c 5 192.168.1.1')
+process = os.popen('ping -c 5 194.210.223.254')
 now = datetime.datetime.now()
 hour = now.hour
 minutes = now.minute
@@ -25,16 +29,18 @@ time = f"{hour}:{minutes}:{seconds}.{ms}"
 output = process.read()
 results = pingparser.parse(output)
 
-max = results[MAX_PING]
-min = results[MIN_PING]
-avg = results[AVG_PING]
+max = verify_result(results[MAX_PING])
+min = verify_result(results[MIN_PING])
+avg = verify_result(results[AVG_PING])
+
+print(f"{max}, {min}, {avg}")
 packets_sent = results[SENT]
 packets_received = results[RECEIVED]
 packet_loss = results[PACKET_LOSS]
 
 connection = None
 
-try:
+'''try:
     connection = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = connection.cursor()
     data = (id_pi, max, min, avg, packets_sent, packets_received, hour)
@@ -48,3 +54,4 @@ except Exception as e:
 finally:
     if connection is not None:
         connection.close()
+'''
