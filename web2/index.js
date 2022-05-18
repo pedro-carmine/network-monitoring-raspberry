@@ -19,7 +19,7 @@ app.get('/data/facts', async (req, res) => {
 
 app.get("/data/devices", async (req, res) => {
     try {
-        const allFacts = await pool.query("SELECT * FROM raspberry NATURAL JOIN last_updated");
+        const allFacts = await pool.query("SELECT * FROM raspberry NATURAL JOIN last_updated NATURAL JOIN d_date");
         res.send(JSON.stringify(allFacts.rows));
     } catch (err) {
         console.log(err.message);
