@@ -31,6 +31,7 @@ CREATE TABLE facts(
     avg NUMERIC,
     packets_sent INTEGER,
     packets_received INTEGER,
+    packet_loss DECIMAL(4,1),
     hour TIME NOT NULL,
     PRIMARY KEY (id_pi, id_date, hour),
     FOREIGN KEY (id_pi) REFERENCES raspberry(id_pi),

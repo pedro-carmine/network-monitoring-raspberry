@@ -43,7 +43,7 @@ try:
     connection = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = connection.cursor()
     data = (id_pi, max, min, avg, packets_sent, packets_received, hour)
-    sql = f"INSERT INTO facts (id_pi, max, min, avg, packets_sent, packets_received, hour) VALUES ('{id_pi}', '{max}', '{min}', '{avg}', '{packets_sent}', '{packets_received}', '{time}');"
+    sql = f"INSERT INTO facts (id_pi, max, min, avg, packets_sent, packets_received, packet_loss, hour) VALUES ('{id_pi}', '{max}', '{min}', '{avg}', '{packets_sent}', '{packets_received}', '{packet_loss}', '{time}');"
     cursor.execute(sql, data)
     connection.commit()
     print(f"Query successfully executed:\n{sql}")
