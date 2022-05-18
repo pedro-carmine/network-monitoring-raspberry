@@ -15,9 +15,9 @@ def verify_result(number):
 id_pi = socket.gethostname()
 user = getpass.getuser()
 
-os.popen('ping -c 1 194.210.223.254')  # wakeup ping
+os.popen('ping -c 1 192.168.1.1')  # wakeup ping
 
-process = os.popen('ping -c 5 194.210.223.254')
+process = os.popen('ping -c 5 192.168.1.1')
 now = datetime.datetime.now()
 hour = now.hour
 minutes = now.minute
@@ -33,14 +33,13 @@ max = verify_result(results[MAX_PING])
 min = verify_result(results[MIN_PING])
 avg = verify_result(results[AVG_PING])
 
-print(f"{max}, {min}, {avg}")
 packets_sent = results[SENT]
 packets_received = results[RECEIVED]
 packet_loss = results[PACKET_LOSS]
 
 connection = None
 
-'''try:
+try:
     connection = psycopg2.connect(f"dbname=testdb user={user}")
     cursor = connection.cursor()
     data = (id_pi, max, min, avg, packets_sent, packets_received, hour)
@@ -54,4 +53,3 @@ except Exception as e:
 finally:
     if connection is not None:
         connection.close()
-'''

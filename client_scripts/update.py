@@ -61,7 +61,7 @@ try:
         data_to_be_sent = collect_all_data()
         if data_to_be_sent:
             for data in data_to_be_sent:
-                sql = f"INSERT INTO facts (id_pi, id_date, max, min, avg, hour) VALUES ('{data[0]}', {data[1]}, {data[2]}, {data[3]}, {data[4]}, '{data[5]}')"
+                sql = f"INSERT INTO facts (id_pi, id_date, max, min, avg, packets_sent, packets_received, hour) VALUES ('{data[0]}', {data[1]}, {data[2]}, {data[3]}, {data[4]}, '{data[5]}', '{data[6]}', '{data[7]}')"
                 cursor.execute(sql, data)
             time = hour_now()
             sql_last_updated = f"INSERT INTO last_updated (id_pi, hour) VALUES ('{hostname}', '{time}')"
@@ -72,7 +72,7 @@ try:
         data_to_be_sent = collect_pending_data(date, hour)
         if data_to_be_sent: # if the list is not empty
             for data in data_to_be_sent:
-                sql = f"INSERT INTO facts (id_pi, id_date, max, min, avg, hour) VALUES ('{data[0]}', {data[1]}, {data[2]}, {data[3]}, {data[4]}, '{data[5]}')"
+                sql = f"INSERT INTO facts (id_pi, id_date, max, min, avg, packets_sent, packets_received, hour) VALUES ('{data[0]}', {data[1]}, {data[2]}, {data[3]}, {data[4]}, '{data[5]}', '{data[6]}', '{data[7]}')"
                 cursor.execute(sql, data)
             time = hour_now()
             delete_last_updated(cursor)
@@ -80,6 +80,7 @@ try:
             cursor.execute(sql_last_updated, (hostname, time))
 
     connection.commit()
+    print("Update committed successfully.")
     cursor.close()
 except Exception as e:
     print(f"An error occurred: {e}")
