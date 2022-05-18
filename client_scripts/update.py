@@ -12,6 +12,7 @@ def id_date_today():
     return datetime.datetime.now().strftime('%Y%m%d')
 
 def register_pi(main_db_cursor):
+    print("This device is not registered in the main database\nRegistering...")
     local_connection = psycopg2.connect(f"dbname=testdb user={user}")
     local_cursor = local_connection.cursor()
     query = f"SELECT * FROM raspberry WHERE id_pi = '{hostname}'"
