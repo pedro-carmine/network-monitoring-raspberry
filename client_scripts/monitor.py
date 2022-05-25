@@ -1,5 +1,5 @@
 #!/home/pi/Repos/networking-monitoring-raspberry/.venv/bin/python
-
+import netifaces
 import os
 import getpass
 import socket
@@ -14,10 +14,12 @@ def verify_result(number):
 
 id_pi = socket.gethostname()
 user = getpass.getuser()
+ping_destination = netifaces.gateways()['default'][netifaces.AF_INET][0]
 
-os.popen('ping -c 1 192.168.1.1')  # wakeup ping
 
-process = os.popen('ping -c 5 192.168.1.1')
+os.popen(f'ping -c 1 {ping_destination}]')  # wakeup ping
+
+process = os.popen(f'ping -c 5 {ping_destination}')
 now = datetime.datetime.now()
 hour = now.hour
 minutes = now.minute

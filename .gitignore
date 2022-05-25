@@ -5,3 +5,4 @@ venv
 .venv
 web/node_modules
 web2/node_modules
+client_scripts/gateway.py

@@ -2,6 +2,7 @@ import psycopg2
 import socket
 import getpass
 import datetime
+import credentials
 
 hostname = socket.gethostname()
 user = getpass.getuser()
@@ -76,7 +77,7 @@ def check_existence(cursor):
 
 
 try:
-    connection = psycopg2.connect(f"host=192.168.1.247 dbname=testdb")
+    connection = psycopg2.connect(credentials.login)
     cursor = connection.cursor()
     check_existence(cursor)
     sql = f"SELECT * FROM last_updated WHERE id_pi = '{hostname}'"
