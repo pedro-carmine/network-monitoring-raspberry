@@ -1,26 +1,9 @@
 # Network Monitoring Tool Project for Rasperry Pi
 
-## Creating Virtual Environment
-```bash
-python -m venv .venv
-```
-
-## Activating Virtual Environment
-
-```bash 
-source .venv/bin/activate
-```
-
-## Deactivating Virtual Environment
-
-```bash
-deactivate
-```
-
 ## Installing Python Packages
 
 ```bash
-python -m pip install psycopg2-binary
+python -m pip install psycopg2-binary netifaces
 ```
 
 ## Creating the Database
