@@ -17,7 +17,7 @@ user = getpass.getuser()
 ping_destination = netifaces.gateways()['default'][netifaces.AF_INET][0]
 
 
-os.popen(f'ping -c 1 {ping_destination}]')  # wakeup ping
+os.popen(f'ping -c 1 {ping_destination}')  # wakeup ping
 
 process = os.popen(f'ping -c 5 {ping_destination}')
 now = datetime.datetime.now()
