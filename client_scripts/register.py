@@ -1,6 +1,7 @@
 import socket
 import getpass
 import psycopg2
+import credentials
 
 def get_ip_address():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -16,7 +17,7 @@ ip = get_ip_address()
 connection = None
 
 try:
-    connection = psycopg2.connect(f"dbname=testdb user={user}")
+    connection = psycopg2.connect(credentials.login)
     cursor = connection.cursor()
     data = (hostname, model)
     sql = f"INSERT INTO raspberry (id_pi, model, location, ip) VALUES ('{hostname}', '{model}', '{location}', '{ip}')"
