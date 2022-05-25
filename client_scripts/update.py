@@ -83,6 +83,8 @@ try:
     sql = f"SELECT * FROM last_updated WHERE id_pi = '{hostname}'"
     cursor.execute(sql, hostname)
     result = cursor.fetchall()
+
+    
     if len(result) == 0: # case when the last_updated date and time is not found in the main database
         data_to_be_sent = collect_all_data()
         if data_to_be_sent:
