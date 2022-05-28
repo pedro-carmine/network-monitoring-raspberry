@@ -37,10 +37,11 @@ const Devices = () => {
         {field: 'model', headerName: 'Model', headerAlign: 'center', width: 80},
         {field: 'location', headerName: 'Location', headerAlign: 'center', width: 80},
         {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate},
-        {field: 'hour', headerName: 'Time', type: 'time', headerAlign: 'center', width: 120},
+        {field: 'hour', headerName: 'Time', headerAlign: 'center', width: 120},
         {
             field: 'actions',
             type: 'actions',
+            headerName: 'Update',
             width: 80,
             getActions: (params) => [
                 <GridActionsCellItem
