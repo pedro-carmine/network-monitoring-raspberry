@@ -46,7 +46,7 @@ const Devices = () => {
                 <GridActionsCellItem
                 icon={<UpdateIcon />}
                 label="Update"
-                onClick={console.log("Updating")}
+                onClick={ () => console.log(params.row.ip)}
                 />
             ]
         },
