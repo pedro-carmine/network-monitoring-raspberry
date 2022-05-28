@@ -36,9 +36,21 @@ const Home = () => {
         {field: 'max', headerName: 'Max', type: 'number', headerAlign: 'center', width: 80},
         {field: 'min', headerName: 'Min', type: 'number', headerAlign: 'center', width: 80},
         {field: 'avg', headerName: 'Avg', type: 'number', headerAlign: 'center', width: 80},
+        {field: 'packets_sent', headerName: 'Sent', type: 'number', headerAlign: 'center', width: 80},
+        {field: 'packets_received', headerName: 'Received', type: 'number', headerAlign: 'center', width: 80},
+        {
+            field: 'packet_loss', 
+            headerName: 'Packet Loss', 
+            type: 'number', 
+            headerAlign: 'center', 
+            width: 80,
+            valueFormatter: (params) => {
+                return `${params.value} %`;
+            }
+        },
         {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate},
         {field: 'hour', headerName: 'Time', type: 'time', headerAlign: 'center', width: 120},
-        {field: 'ip', headerName: 'IP Address', headerAlign: 'center', width: 100}
+        {field: 'ip', headerName: 'IP Address', headerAlign: 'center', width: 100},
     ];
 
 
