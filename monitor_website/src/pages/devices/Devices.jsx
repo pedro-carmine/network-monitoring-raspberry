@@ -1,6 +1,7 @@
 import "./devices.css"
 import React, { useState, useEffect } from "react";
-import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import { DataGrid, GridToolbar, GridActionsCellItem } from "@mui/x-data-grid";
+import UpdateIcon from '@mui/icons-material/Update';
 
 const Devices = () => {
     const [data, setData]  = useState([]);
@@ -37,6 +38,18 @@ const Devices = () => {
         {field: 'location', headerName: 'Location', headerAlign: 'center', width: 80},
         {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate},
         {field: 'hour', headerName: 'Time', type: 'time', headerAlign: 'center', width: 120},
+        {
+            field: 'actions',
+            type: 'actions',
+            width: 80,
+            getActions: (params) => [
+                <GridActionsCellItem
+                icon={<UpdateIcon />}
+                label="Update"
+                onClick={console.log("Updating")}
+                />
+            ]
+        },
     ];
 
 
