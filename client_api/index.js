@@ -23,10 +23,17 @@ function os_func() {
 }
 var os = new os_func();
 
+const update = () => {
+    os.execCommand('python3 ../client_scripts/update.py').then(response => {
+        return response;
+    });
+};
+
 app.get('/monitor', (req, res) => {
     os.execCommand('python3 ../client_scripts/monitor.py').then(response => {
-        console.log(response);
-        res.send(response);
+        const monitorResponse = response;
+        const updateResponse = update();
+        res.send(monitorResponse + ' ' + updateResponse);
     }).catch(err => {
         console.log(err);
     });
