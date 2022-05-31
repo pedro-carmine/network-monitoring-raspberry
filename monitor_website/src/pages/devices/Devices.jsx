@@ -17,6 +17,15 @@ const Devices = () => {
         }
     };
 
+    const monitor = async (ip) => {
+        try {
+            const response = await fetch(`${ip}:8081/monitor`);
+            console.log(response);
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
 
     useEffect(() => {
         getData();
@@ -47,7 +56,7 @@ const Devices = () => {
                 <GridActionsCellItem
                 icon={<UpdateIcon />}
                 label="Update"
-                onClick={ () => console.log(params.row.ip)}
+                onClick={ () => monitor(params.row.ip)}
                 />
             ]
         },
