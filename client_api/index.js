@@ -23,7 +23,7 @@ function os_func() {
 }
 var os = new os_func();
 
-app.get('/data/monitor', (req, res) => {
+app.get('/monitor', (req, res) => {
     os.execCommand('python3 ../client_scripts/monitor.py').then(response => {
         console.log(response);
         res.send(response);
