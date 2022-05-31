@@ -43,7 +43,7 @@ const Home = () => {
             headerName: 'Packet Loss', 
             type: 'number', 
             headerAlign: 'center', 
-            width: 80,
+            width: 120,
             valueFormatter: (params) => {
                 return `${params.value} %`;
             }
