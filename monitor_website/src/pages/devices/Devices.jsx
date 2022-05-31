@@ -19,12 +19,11 @@ const Devices = () => {
 
     const monitor = async (ip) => {
         try {
-            const response = await fetch(`${ip}:8081/monitor`);
-            console.log(response);
+            const response = await fetch(`http://${ip}:8081/monitor`);
         } catch (err) {
             console.error(err);
         }
-    }
+    };
 
 
     useEffect(() => {
