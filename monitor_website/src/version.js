@@ -1,3 +1,3 @@
 const version = 'data';
 
-export default version;
+module.exports = version;
