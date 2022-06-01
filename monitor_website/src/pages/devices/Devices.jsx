@@ -16,9 +16,10 @@ const Devices = () => {
 
 
     const [open, setOpen] = useState(false);
+    const [severity, setSeverity] = useState('');
     const [loading, setLoading] = useState(false);
     const [data, setData]  = useState([]);
-    const [severity, setSeverity] = useState('');
+    const [message, setMessage] = useState('');
 
 
     const handleClose = (event, reason) => {
@@ -27,6 +28,17 @@ const Devices = () => {
         }
 
         setOpen(false);
+    }
+
+    const handleResponse = (status) => {
+        if (status === 200) {
+            setSeverity('success');
+            setMessage('Update request sent');
+        }
+        else {
+            setSeverity('error');
+            setMessage('An error occurred');
+        }
     }
 
     const getData = async () => {
@@ -44,9 +56,9 @@ const Devices = () => {
         try {
             setLoading(true);
             const response = await fetch(`http://${ip}:8081/monitor`);
-            response.status === 200 ? setSeverity('success') : setSeverity('error');
+            handleResponse(response.status);
         } catch (err) {
-            setSeverity('error');
+            handleResponse(-1);
             console.error(err);
         }
         setLoading(false);
@@ -100,7 +112,7 @@ const Devices = () => {
             />
             <Snackbar anchorOrigin={{vertical:'top', horizontal:'center'}} open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
-                     Test Alert!
+                     {message}
                 </Alert>
             </Snackbar>
             <Backdrop
