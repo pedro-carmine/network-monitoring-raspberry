@@ -2,12 +2,13 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./db");
+const version = require('../monitor_website/src/version.js');
 
 //middleware
 app.use(cors());
 app.use(express.json());
 
-app.get('/data/facts', async (req, res) => {
+app.get(`/${version}/facts`, async (req, res) => {
     try {
         const allFacts = await pool.query("SELECT * FROM data");
         res.send(JSON.stringify(allFacts.rows));
@@ -16,7 +17,7 @@ app.get('/data/facts', async (req, res) => {
     }
 });
 
-app.get("/data/devices", async (req, res) => {
+app.get(`/${version}/devices`, async (req, res) => {
     try {
         const allFacts = await pool.query("SELECT * FROM raspberry NATURAL JOIN last_updated NATURAL JOIN d_date");
         res.send(JSON.stringify(allFacts.rows));
