@@ -4,6 +4,8 @@ import { DataGrid, GridToolbar, GridActionsCellItem } from "@mui/x-data-grid";
 import UpdateIcon from '@mui/icons-material/Update';
 import MuiAlert from '@mui/material/Alert';
 import Snackbar from "@mui/material/Snackbar";
+import Backdrop from "@mui/material/Backdrop";
+import CircularProgress from "@mui/material/CircularProgress";
 import version from "../../version.js";
 
 
@@ -14,6 +16,7 @@ const Devices = () => {
 
 
     const [open, setOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [data, setData]  = useState([]);
     const [severity, setSeverity] = useState('');
 
@@ -26,6 +29,9 @@ const Devices = () => {
         setOpen(false);
     }
 
+    const handleLoading = () => {
+        setLoading(true);
+    }
 
     const getData = async () => {
         try {
@@ -40,12 +46,14 @@ const Devices = () => {
 
     const monitor = async (ip) => {
         try {
+            setLoading(true);
             const response = await fetch(`http://${ip}:8081/monitor`);
             response.status === 200 ? setSeverity('success') : setSeverity('error');
         } catch (err) {
             setSeverity('error');
             console.error(err);
         }
+        setLoading(false);
         setOpen(true);
     };
 
@@ -99,6 +107,13 @@ const Devices = () => {
                      Test Alert!
                 </Alert>
             </Snackbar>
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={loading}
+                onClick={handleClose}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </div>
     );
 };
