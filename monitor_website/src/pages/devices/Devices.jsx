@@ -4,6 +4,8 @@ import { DataGrid, GridToolbar, GridActionsCellItem } from "@mui/x-data-grid";
 import UpdateIcon from '@mui/icons-material/Update';
 import MuiAlert from '@mui/material/Alert';
 import Snackbar from "@mui/material/Snackbar";
+import version from "../../version.js";
+
 
 const Devices = () => {
     const Alert = React.forwardRef(function Alert(props, ref) {
@@ -27,7 +29,7 @@ const Devices = () => {
 
     const getData = async () => {
         try {
-            const response = await fetch("/data/devices");
+            const response = await fetch(`/${version}/devices`);
             const jsonData = await response.json();
 
             setData(jsonData);
@@ -83,8 +85,6 @@ const Devices = () => {
         },
     ];
 
-
-
     return (
         <div className="devices">
             <DataGrid
@@ -92,7 +92,7 @@ const Devices = () => {
                 columns={columns}
                 id="_id"
                 components={{Toolbar: GridToolbar}}
-                getRowId={(row) => (row.id_pi, row.ip) }
+                getRowId={(row) => (row.id_pi + row.ip) }
             />
             <Snackbar anchorOrigin={{vertical:'top', horizontal:'center'}} open={open} autoHideDuration={6000} onClose={handleClose}>
                 <Alert onClose={handleClose} severity={severity} sx={{ width: '100%' }}>
