@@ -29,10 +29,6 @@ const Devices = () => {
         setOpen(false);
     }
 
-    const handleLoading = () => {
-        setLoading(true);
-    }
-
     const getData = async () => {
         try {
             const response = await fetch(`/${version}/devices`);
@@ -110,7 +106,6 @@ const Devices = () => {
             <Backdrop
                 sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
                 open={loading}
-                onClick={handleClose}
             >
                 <CircularProgress color="inherit" />
             </Backdrop>
