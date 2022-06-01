@@ -1,13 +1,14 @@
 import "./home.css"
 import React, { useState, useEffect } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import version from "../../version.js";
 
 const Home = () => {
     const [data, setData]  = useState([]);
 
     const getData = async () => {
         try {
-            const response = await fetch("/data/facts");
+            const response = await fetch(`/${version}/facts`);
             const jsonData = await response.json();
 
             setData(jsonData);
