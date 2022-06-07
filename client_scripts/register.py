@@ -1,3 +1,4 @@
+from ast import Try
 import socket
 import getpass
 import psycopg2
@@ -11,7 +12,11 @@ hostname = socket.gethostname()
 user = getpass.getuser()
 model = input("Raspberry Pi model: ")
 location = input("Raspberry Pi location: ")
-ip = get_ip_address()
+
+try:
+    ip = get_ip_address()
+except Exception as e:
+    print(f"Check if the device is connected to a network and has an IP address\nError: {e}")
 
 connection = None
 
