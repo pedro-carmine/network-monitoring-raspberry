@@ -49,6 +49,7 @@ const Home = () => {
                 return `${params.value} %`;
             }
         },
+        {field: 'connection_status', headerName: 'Status', headerAlign: 'center', width: 120},
         {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate},
         {field: 'hour', headerName: 'Time', headerAlign: 'center', width: 120},
         {field: 'ip', headerName: 'IP Address', headerAlign: 'center', width: 100},
