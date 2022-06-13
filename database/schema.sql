@@ -32,6 +32,7 @@ CREATE TABLE facts(
     packets_sent INTEGER,
     packets_received INTEGER,
     packet_loss DECIMAL(4,1),
+    connection_status VARCHAR(20),
     hour TIME NOT NULL,
     PRIMARY KEY (id_pi, id_date, hour),
     FOREIGN KEY (id_pi) REFERENCES raspberry(id_pi),
@@ -53,7 +54,7 @@ $$
 DECLARE date_value TIMESTAMP;
 BEGIN
     date_value := '2022-01-01 00:00:00';
-    WHILE date_value < '2030-01-01 00:00:00' LOOP
+    WHILE date_value < '2050-01-01 00:00:00' LOOP
         INSERT INTO d_date(
           id_date,
           day,
@@ -61,23 +62,23 @@ BEGIN
           week,
           month,
           year
-) VALUES (
-EXTRACT(YEAR FROM date_value) * 10000
-+ EXTRACT(MONTH FROM date_value)*100
-+ EXTRACT(DAY FROM date_value),
-CAST(EXTRACT(DAY FROM date_value) AS INTEGER),
-CASE EXTRACT(dow FROM date_value) 
-WHEN 0 THEN 'Sunday'
-WHEN 1 THEN 'Monday'
-WHEN 2 THEN 'Tuesday'
-WHEN 3 THEN 'Wednesday'
-WHEN 4 THEN 'Thursday'
-WHEN 5 THEN 'Friday'
-WHEN 6 THEN 'Saturday'
-END,
-CAST(EXTRACT(WEEK FROM date_value) AS INTEGER),
-CAST(EXTRACT(MONTH FROM date_value) AS INTEGER), EXTRACT(YEAR FROM date_value)
-);
+            ) VALUES (
+            EXTRACT(YEAR FROM date_value) * 10000
+            + EXTRACT(MONTH FROM date_value)*100
+            + EXTRACT(DAY FROM date_value),
+            CAST(EXTRACT(DAY FROM date_value) AS INTEGER),
+            CASE EXTRACT(dow FROM date_value) 
+            WHEN 0 THEN 'Sunday'
+            WHEN 1 THEN 'Monday'
+            WHEN 2 THEN 'Tuesday'
+            WHEN 3 THEN 'Wednesday'
+            WHEN 4 THEN 'Thursday'
+            WHEN 5 THEN 'Friday'
+            WHEN 6 THEN 'Saturday'
+            END,
+            CAST(EXTRACT(WEEK FROM date_value) AS INTEGER),
+            CAST(EXTRACT(MONTH FROM date_value) AS INTEGER), EXTRACT(YEAR FROM date_value)
+            );
         date_value := date_value + INTERVAL '1 DAY';
     END LOOP;
 END;
