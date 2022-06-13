@@ -89,7 +89,7 @@ try:
         data_to_be_sent = collect_all_data()
         if data_to_be_sent:
             for data in data_to_be_sent:
-                sql = f"INSERT INTO facts (id_pi, id_date, max, min, avg, packets_sent, packets_received, packet_loss, hour) VALUES ('{data[0]}', {data[1]}, {data[2]}, {data[3]}, {data[4]}, '{data[5]}', '{data[6]}', '{data[7]}', '{data[8]}')"
+                sql = f"INSERT INTO facts (id_pi, id_date, max, min, avg, packets_sent, packets_received, packet_loss, hour, connection_status) VALUES ('{data[0]}', {data[1]}, {data[2]}, {data[3]}, {data[4]}, '{data[5]}', '{data[6]}', '{data[7]}', '{data[8]}', '{data[9]}')"
                 cursor.execute(sql, data)
             time = hour_now()
             sql_last_updated = f"INSERT INTO last_updated (id_pi, hour) VALUES ('{hostname}', '{time}')"
@@ -100,7 +100,7 @@ try:
         data_to_be_sent = collect_pending_data(date, hour)
         if data_to_be_sent: # if the list is not empty
             for data in data_to_be_sent:
-                sql = f"INSERT INTO facts (id_pi, id_date, max, min, avg, packets_sent, packets_received, packet_loss, hour) VALUES ('{data[0]}', {data[1]}, {data[2]}, {data[3]}, {data[4]}, '{data[5]}', '{data[6]}', '{data[7]}', '{data[8]}')"
+                sql = f"INSERT INTO facts (id_pi, id_date, max, min, avg, packets_sent, packets_received, packet_loss, hour, connection_status) VALUES ('{data[0]}', {data[1]}, {data[2]}, {data[3]}, {data[4]}, '{data[5]}', '{data[6]}', '{data[7]}', '{data[8]}', '{data[9]}')"
                 cursor.execute(sql, data)
             time = hour_now()
             delete_last_updated(cursor)
