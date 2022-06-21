@@ -13,9 +13,9 @@ CREATE TABLE d_date (
 );
 
 CREATE TABLE raspberry(
-    id_pi VARCHAR(20),
-    model VARCHAR(20),
-    location VARCHAR(20),
+    id_pi VARCHAR(100),
+    model VARCHAR(100),
+    location VARCHAR(100),
     ip VARCHAR(15),
     PRIMARY KEY (id_pi),
     CONSTRAINT valid_ip_check CHECK (LENGTH(ip) < 16)
@@ -23,7 +23,7 @@ CREATE TABLE raspberry(
 );
 
 CREATE TABLE facts(
-    id_pi VARCHAR(20),
+    id_pi VARCHAR(60),
     id_date INTEGER DEFAULT (EXTRACT (YEAR FROM CURRENT_DATE) * 10000
     + EXTRACT (MONTH FROM CURRENT_DATE) * 100 + EXTRACT(DAY FROM CURRENT_DATE)),
     max NUMERIC,
@@ -40,7 +40,7 @@ CREATE TABLE facts(
 );
 
 CREATE TABLE last_updated(
-    id_pi VARCHAR(20),
+    id_pi VARCHAR(100),
     id_date INTEGER DEFAULT (EXTRACT (YEAR FROM CURRENT_DATE) * 10000
     + EXTRACT (MONTH FROM CURRENT_DATE) * 100 + EXTRACT(DAY FROM CURRENT_DATE)),
     hour TIME NOT NULL,
