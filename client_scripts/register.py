@@ -3,6 +3,8 @@ import socket
 import getpass
 import psycopg2
 
+from client_scripts.constants import LOCAL_DB_NAME
+
 def get_ip_address():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
     s.connect(("8.8.8.8", 80))
@@ -21,7 +23,7 @@ except Exception as e:
 connection = None
 
 try:
-    connection = psycopg2.connect(f"dbname=testdb user={user}")
+    connection = psycopg2.connect(f"dbname={LOCAL_DB_NAME} user={user}")
     cursor = connection.cursor()
     data = (hostname, model)
     sql = f"INSERT INTO raspberry (id_pi, model, location, ip) VALUES ('{hostname}', '{model}', '{location}', '{ip}')"

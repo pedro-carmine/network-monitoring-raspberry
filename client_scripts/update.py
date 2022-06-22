@@ -2,6 +2,7 @@ import psycopg2
 import socket
 import getpass
 import datetime
+from client_scripts.constants import LOCAL_DB_NAME
 import credentials
 
 hostname = socket.gethostname()
@@ -14,7 +15,7 @@ def id_date_today():
 
 def register_pi(main_db_cursor):
     print("This device is not registered in the main database\nRegistering...")
-    local_connection = psycopg2.connect(f"dbname=testdb user={user}")
+    local_connection = psycopg2.connect(f"dbname={LOCAL_DB_NAME} user={user}")
     local_cursor = local_connection.cursor()
     query = f"SELECT * FROM raspberry WHERE id_pi = '{hostname}'"
     local_cursor.execute(query)
@@ -29,7 +30,7 @@ def register_pi(main_db_cursor):
     main_db_cursor.execute(query)
 
 def collect_all_data():
-    local_conn = psycopg2.connect(f"dbname=testdb user={user}")
+    local_conn = psycopg2.connect(f"dbname={LOCAL_DB_NAME} user={user}")
     cursor = local_conn.cursor()
     sql = f"SELECT * FROM facts"
     cursor.execute(sql)
@@ -39,7 +40,7 @@ def collect_all_data():
     return result
 
 def collect_pending_data(date, hour):
-    local_conn = psycopg2.connect(f"dbname=testdb user={user}")
+    local_conn = psycopg2.connect(f"dbname={LOCAL_DB_NAME} user={user}")
     cursor = local_conn.cursor()
     today = id_date_today()
     if today != str(date):

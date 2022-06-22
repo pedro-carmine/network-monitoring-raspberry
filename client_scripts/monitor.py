@@ -58,7 +58,7 @@ time = f"{hour}:{minutes}:{seconds}.{ms}"
 connection = None
 
 try:
-    connection = psycopg2.connect(f"dbname=testdb user={user}")
+    connection = psycopg2.connect(f"dbname={LOCAL_DB_NAME} user={user}")
     cursor = connection.cursor()
     data = (id_pi, max, min, avg, packets_sent, packets_received, hour, status)
     sql = f"INSERT INTO facts (id_pi, max, min, avg, packets_sent, packets_received, packet_loss, hour, connection_status) VALUES ('{id_pi}', '{max}', '{min}', '{avg}', '{packets_sent}', '{packets_received}', '{packet_loss}', '{time}', '{status}');"
