@@ -1,4 +1,3 @@
-#!/home/pi/Repos/networking-monitoring-raspberry/.venv/bin/python
 import netifaces
 import os
 import getpass
