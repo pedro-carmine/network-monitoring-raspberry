@@ -9,7 +9,7 @@ if [ $? -ne 0 ]; then
     echo -e "${WHITE}Install it via apt? [y]es [n]o"
     read -rsn1 input
     if [ "$input" = "y" ]; then
-        sudo apt update && sudo apt install postgresql-client-common -y
+        sudo apt install postgresql -y
 
     else
         echo -e "${RED}Aborting installation. Please install PostgreSQL before running this bash script."
@@ -21,14 +21,12 @@ fi
 
 createdb localdb -O $USER
 if [ $? -ne 0 ]; then
-    echo -e "${RED}An error occurred when creating the database. Aborting."
     exit 1
 fi
 
 
 psql -d localdb -f schema.sql -f view.sql
 if [ $? -ne 0 ]; then
-    echo -e "${RED}An error occurred when creating the database schema. Aborting."
     exit 1
 fi
 pip install -r ../requirements.txt
