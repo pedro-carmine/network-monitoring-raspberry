@@ -106,7 +106,7 @@ const Home = () => {
                 columns={columns}
                 id="_id"
                 components={{Toolbar: GridToolbar}}
-                getRowId={(row) => (row.id_pi, row.date, row.hour) }
+                getRowId={(row) => ((row.id_pi, row.date, row.hour)) }
                 />
         </div>
     );
