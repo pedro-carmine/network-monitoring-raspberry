@@ -2,8 +2,7 @@ from ast import Try
 import socket
 import getpass
 import psycopg2
-
-from client_scripts.constants import LOCAL_DB_NAME
+from constants import LOCAL_DB_NAME
 
 def get_ip_address():
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
