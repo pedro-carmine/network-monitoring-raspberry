@@ -1,9 +1,10 @@
+from asyncio import constants
 import psycopg2
 import socket
 import getpass
 import datetime
-from client_scripts.constants import LOCAL_DB_NAME
 import credentials
+from constants import *
 
 hostname = socket.gethostname()
 user = getpass.getuser()
