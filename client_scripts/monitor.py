@@ -12,7 +12,7 @@ def verify_result(number):
     return 0 if number == 'NaN' else number
 
 def check_status(packet_loss):
-    return NO_CONNECTION if packet_loss == '100.0' else CONNECTED
+    return NO_CONNECTION if packet_loss == '100' else CONNECTED
 
 id_pi = socket.gethostname()
 user = getpass.getuser()
