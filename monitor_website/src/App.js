@@ -13,7 +13,7 @@ function App() {
               <Sidebar />
               <Routes>
                   <Route exact path='/' element={<Home />} />
-                  <Route exact path='/devices' element={<Data />} />
+                  <Route exact path='/data' element={<Data />} />
               </Routes>
           </div>
       </Router>

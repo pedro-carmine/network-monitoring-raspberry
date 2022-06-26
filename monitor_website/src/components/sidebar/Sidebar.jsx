@@ -16,7 +16,7 @@ const Sidebar = () => {
                                 Home
                             </li>
                         </Link>
-                        <Link to="/devices" className="link">
+                        <Link to="/data" className="link">
                             <li className="sidebarListItem">
                                 <TableView className="sidebarIcon" />
                                 Data List
