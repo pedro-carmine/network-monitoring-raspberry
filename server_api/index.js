@@ -26,6 +26,15 @@ app.get(`/${version}/devices`, async (req, res) => {
     }
 });
 
+app.get(`/${version}/facts/:device_id`, async (req, res) => {
+    try {
+        const allFacts = await pool.query(`SELECT * FROM data WHERE id_pi = '${req.params.device_id}'`);
+        res.send(JSON.stringify(allFacts.rows));
+    } catch (err) {
+        console.log(err.message);
+    }
+});
+
 app.listen(8080, () => {
     console.log("Server started on port 8080");
 });
