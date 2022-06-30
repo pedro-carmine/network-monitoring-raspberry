@@ -1,5 +1,6 @@
 import "./sidebar.css";
-import { Home, Devices } from "@material-ui/icons";
+import { Home } from "@material-ui/icons";
+import { TableView } from "@mui/icons-material"
 import {Link} from "react-router-dom";
 
 const Sidebar = () => {
@@ -15,10 +16,10 @@ const Sidebar = () => {
                                 Home
                             </li>
                         </Link>
-                        <Link to="/devices" className="link">
+                        <Link to="/data" className="link">
                             <li className="sidebarListItem">
-                                <Devices className="sidebarIcon" />
-                                Devices
+                                <TableView className="sidebarIcon" />
+                                Data List
                             </li>
                         </Link>
                     </ul>

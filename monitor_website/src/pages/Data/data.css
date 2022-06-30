@@ -1,5 +1,9 @@
-.home {
+.data {
     margin-left: 10px;
     margin-right: 10px;
     flex: 3;
+}
+
+.title {
+    text-align: center;
 }
