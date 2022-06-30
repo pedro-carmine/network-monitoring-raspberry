@@ -3,7 +3,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 WHITE='\033[0;97m'
 
-which psql
+which psql > /dev/null
 if [ $? -ne 0 ]; then
     echo -e "${RED}PostgreSQL not found in the system."
     echo -e "${WHITE}Install it via apt? [y]es [n]o"
