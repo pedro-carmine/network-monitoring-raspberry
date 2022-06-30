@@ -155,6 +155,7 @@ const Home = () => {
                 icon={<UpdateIcon />}
                 label="Update"
                 onClick={ () => monitor(params.row.ip)}
+                sx={{color: 'black'}}
                 />
             ]
         },
@@ -168,6 +169,7 @@ const Home = () => {
                 icon={<ListIcon />}
                 label="List"
                 onClick={ () => showData(params.row.id_pi)}
+                sx={{color: 'black'}}
                 />
             ]
         },
@@ -220,7 +222,7 @@ const Home = () => {
                 <CircularProgress color="inherit" />
             </Backdrop>
             <Backdrop
-                sx={{ color: '#fff', backgroundColor: '#fff' ,zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1, padding: '30px', verticalAlign: 'middle'}}
                 open={showDeviceList}
             >
                 <DataGrid
@@ -229,11 +231,14 @@ const Home = () => {
                     id="_id"
                     components={{Toolbar: GridToolbar}}
                     getRowId={(row) => ((row.id_pi, row.date, row.hour)) }
+                    sx={{backgroundColor: '#fff'}}
                 />
                 <Button 
                 sx={{
                     color: '#000',
-                    backgroundColor: '#fff'
+                    backgroundColor: '#fff',
+                    marginLeft: '5px',
+                    marginRight: '5px',
                 }}
                 variant="Contained" 
                 onClick={() => {

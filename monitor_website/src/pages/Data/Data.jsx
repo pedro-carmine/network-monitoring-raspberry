@@ -72,13 +72,13 @@ const Data = () => {
     };
 
     const columns = [
-        {field: 'id_pi', headerName: 'Hostname', headerAlign: 'center', width: 100},
-        {field: 'location', headerName: 'Location', headerAlign: 'center', width: 100},
-        {field: 'max', headerName: 'Max', type: 'number', headerAlign: 'center', width: 80},
-        {field: 'min', headerName: 'Min', type: 'number', headerAlign: 'center', width: 80},
-        {field: 'avg', headerName: 'Avg', type: 'number', headerAlign: 'center', width: 80},
-        {field: 'packets_sent', headerName: 'Sent', type: 'number', headerAlign: 'center', width: 80},
-        {field: 'packets_received', headerName: 'Received', type: 'number', headerAlign: 'center', width: 80},
+        {field: 'id_pi', headerName: 'Hostname', headerAlign: 'center', width: 85},
+        {field: 'location', headerName: 'Location', headerAlign: 'center', width: 70},
+        {field: 'max', headerName: 'Max', type: 'number', headerAlign: 'center', width: 65},
+        {field: 'min', headerName: 'Min', type: 'number', headerAlign: 'center', width: 65},
+        {field: 'avg', headerName: 'Avg', type: 'number', headerAlign: 'center', width: 65},
+        {field: 'packets_sent', headerName: 'Sent', type: 'number', headerAlign: 'center', width: 65},
+        {field: 'packets_received', headerName: 'Received', type: 'number', headerAlign: 'center', width: 70},
         {
             field: 'packet_loss', 
             headerName: 'Packet Loss', 
