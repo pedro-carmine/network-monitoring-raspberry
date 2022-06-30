@@ -11,6 +11,7 @@ if [ $? -ne 0 ]; then
     if [ "$input" = "y" ]; then
         sudo apt install postgresql -y
         echo -e "${GREEN}PostgreSQL installed. Please create a role for the user $USER and run this bash script again."
+        exit 0
     else
         echo -e "${RED}Aborting installation. Please install PostgreSQL before running this bash script."
         exit 0
