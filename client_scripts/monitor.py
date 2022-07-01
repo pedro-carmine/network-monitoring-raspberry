@@ -74,6 +74,7 @@ try:
 
         status = check_status(packet_loss)
 except Exception as e: # when the device is not connected to a network and have no IP, an exception will be throw
+    print(e)
     max = 0
     min = 0
     avg = 0
