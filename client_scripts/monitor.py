@@ -34,7 +34,11 @@ try:
     ping_destination = gateways['default'][netifaces.AF_INET][0]
     interface = gateways['default'][netifaces.AF_INET][1]
     
-    transmitter.destionation = ping_destination
+    transmitter.destination = ping_destination
+    transmitter.count = 1
+    transmitter.ping() # wakeup ping
+
+    transmitter.count = 5
     result = transmitter.ping()
     dict = ping_parser.parse(result).as_dict()
 
