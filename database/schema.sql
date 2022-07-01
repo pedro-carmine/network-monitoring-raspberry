@@ -34,6 +34,7 @@ CREATE TABLE facts(
     packet_loss DECIMAL(4,1),
     hour TIME NOT NULL,
     connection_status VARCHAR(20),
+    interface VARCHAR(20),
     PRIMARY KEY (id_pi, id_date, hour),
     FOREIGN KEY (id_pi) REFERENCES raspberry(id_pi),
     FOREIGN KEY (id_date) REFERENCES d_date(id_date)
