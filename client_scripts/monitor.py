@@ -51,11 +51,9 @@ try:
     packet_loss = dict[PACKET_LOSS]
 
     status = check_status(packet_loss)
-    print("DEBUG: Status of the first ping= " + status)
-    print(status == NO_CONNECTION)
-    print(len(gateways) == 2)
+
     if status == NO_CONNECTION and len(gateways) == 2: # try pinging with the wireless interface
-        print("DEBUG: TRYING ANOTHER INTERFACE")
+        print("Interface {interface} with no connection, trying with another available interface")
         interface = gateways[2][1][1]
         ping_destination = gateways[2][1][0]
         print(interface, ping_destination)
@@ -79,7 +77,6 @@ try:
 
         status = check_status(packet_loss)
 except Exception as e: # when the device is not connected to a network and have no IP, an exception will be throw
-    print(e)
     max = 0
     min = 0
     avg = 0
