@@ -59,18 +59,23 @@ try:
         interface = gateways[2][1][1]
         ping_destination = gateways[2][1][0]
         print(interface, ping_destination)
-        # os.popen(f'ping -c 1 -I {interface} {ping_destination}')
-        # os.popen(f'ping -c 5 -I {interface} {ping_destination}')
+        
+        transmitter.interface = interface
+        transmitter.destination = ping_destination
+        transmitter.count = 1
+        transmitter.ping() # wakeup ping
 
-        # output = process.read()
-        # results = pingparser.parse(output)
-        # max = verify_result(results[MAX_PING])
-        # min = verify_result(results[MIN_PING])
-        # avg = verify_result(results[AVG_PING])
+        transmitter.count = 5
+        result = transmitter.ping()
+        dict = ping_parser.parse(result).as_dict()
 
-        # packets_sent = results[SENT]
-        # packets_received = results[RECEIVED]
-        # packet_loss = results[PACKET_LOSS]
+        max = verify_result(dict[MAX_PING])
+        min = verify_result(dict[MIN_PING])
+        avg = verify_result(dict[AVG_PING])
+
+        packets_sent = dict[SENT]
+        packets_received = dict[RECEIVED]
+        packet_loss = dict[PACKET_LOSS]
 
         status = check_status(packet_loss)
 except Exception as e: # when the device is not connected to a network and have no IP, an exception will be throw
