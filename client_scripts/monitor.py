@@ -13,7 +13,7 @@ def verify_result(number):
     return 0 if number == None else number
 
 def check_status(packet_loss):
-    return NO_CONNECTION if packet_loss == '100' else CONNECTED
+    return NO_CONNECTION if packet_loss == 100 else CONNECTED
 
 def get_time():
     now = datetime.datetime.now()
