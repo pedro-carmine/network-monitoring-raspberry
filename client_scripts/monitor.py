@@ -52,7 +52,8 @@ try:
 
     status = check_status(packet_loss)
 
-    if status == NO_CONNECTION and len(gateways) == 2: # try pinging with the wireless interface
+    active_interfaces_count = len(gateways[2])
+    if status == NO_CONNECTION and active_interfaces_count == 2: # try pinging with the wireless interface
         print(f"Interface {interface} with no connection, trying with another available interface")
         interface = gateways[2][1][1]
         ping_destination = gateways[2][1][0]
