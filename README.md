@@ -28,6 +28,3 @@ Now the database is created and registered with the Raspberry Pi inside it. To s
 
 ## License
 [MIT](https://github.com/pedro-carmine/networking-monitoring-raspberry/blob/main/LICENSE)
-
-## External Library:
-[pingparser](https://github.com/ssteinerx/pingparser)
