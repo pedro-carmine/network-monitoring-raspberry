@@ -49,6 +49,8 @@ try:
 
     status = check_status(packet_loss)
     print("DEBUG: Status of the first ping= " + status)
+    print(status == NO_CONNECTION)
+    print(len(gateways) == 2)
     if status == NO_CONNECTION and len(gateways == 2): # try pinging with the wireless interface
         print("DEBUG: TRYING ANOTHER INTERFACE")
         interface = gateways[2][1][1]
