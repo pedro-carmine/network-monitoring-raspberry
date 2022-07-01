@@ -1,15 +1,16 @@
 import netifaces
-import os
 import getpass
 import socket
-import pingparser
+import pingparsing
 import psycopg2
 import datetime
 from constants import *
 
+ping_parser = pingparsing.PingParsing()
+transmitter = pingparsing.PingTransmitter()
 
 def verify_result(number):
-    return 0 if number == 'NaN' else number
+    return 0 if number == None else number
 
 def check_status(packet_loss):
     return NO_CONNECTION if packet_loss == '100' else CONNECTED
@@ -33,19 +34,17 @@ try:
     ping_destination = gateways['default'][netifaces.AF_INET][0]
     interface = gateways['default'][netifaces.AF_INET][1]
     
-    os.popen(f'ping -c 1 {ping_destination}')  # wakeup ping
-    process = os.popen(f'ping -c 5 {ping_destination}')
+    transmitter.destionation = ping_destination
+    result = transmitter.ping()
+    dict = ping_parser.parse(result).as_dict()
 
-    output = process.read()
-    results = pingparser.parse(output)
+    max = verify_result(dict[MAX_PING])
+    min = verify_result(dict[MIN_PING])
+    avg = verify_result(dict[AVG_PING])
 
-    max = verify_result(results[MAX_PING])
-    min = verify_result(results[MIN_PING])
-    avg = verify_result(results[AVG_PING])
-
-    packets_sent = results[SENT]
-    packets_received = results[RECEIVED]
-    packet_loss = results[PACKET_LOSS]
+    packets_sent = dict[SENT]
+    packets_received = dict[RECEIVED]
+    packet_loss = dict[PACKET_LOSS]
 
     status = check_status(packet_loss)
     print("DEBUG: Status of the first ping= " + status)
@@ -56,18 +55,18 @@ try:
         interface = gateways[2][1][1]
         ping_destination = gateways[2][1][0]
         print(interface, ping_destination)
-        os.popen(f'ping -c 1 -I {interface} {ping_destination}')
-        os.popen(f'ping -c 5 -I {interface} {ping_destination}')
+        # os.popen(f'ping -c 1 -I {interface} {ping_destination}')
+        # os.popen(f'ping -c 5 -I {interface} {ping_destination}')
 
-        output = process.read()
-        results = pingparser.parse(output)
-        max = verify_result(results[MAX_PING])
-        min = verify_result(results[MIN_PING])
-        avg = verify_result(results[AVG_PING])
+        # output = process.read()
+        # results = pingparser.parse(output)
+        # max = verify_result(results[MAX_PING])
+        # min = verify_result(results[MIN_PING])
+        # avg = verify_result(results[AVG_PING])
 
-        packets_sent = results[SENT]
-        packets_received = results[RECEIVED]
-        packet_loss = results[PACKET_LOSS]
+        # packets_sent = results[SENT]
+        # packets_received = results[RECEIVED]
+        # packet_loss = results[PACKET_LOSS]
 
         status = check_status(packet_loss)
 except Exception as e: # when the device is not connected to a network and have no IP, an exception will be throw
