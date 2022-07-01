@@ -3,13 +3,11 @@
 ## Installing Python Packages
 
 ```bash
-python -m pip install psycopg2-binary netifaces
+pip install -r requirements.txt
 ```
 
 ## Creating the Database
 
-- The bash script inside this project only contains the path for Raspberry Pi's Linux system
-- Make sure you have a /home/pi folder and clone this repository inside /home/pi/Repos (create Repos inside the /home/pi folder)
 - Make sure postgres service is running on port 5432
 - You can edit the script to choose the path of your preference or change the username as your own
 - If all the above requirements are met:
