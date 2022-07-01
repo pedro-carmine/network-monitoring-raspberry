@@ -1,9 +1,9 @@
 import Topbar from "./components/topbar/Topbar";
 import Sidebar from "./components/sidebar/Sidebar";
-import Home from "./pages/Home/Home";
+import Home from "./pages/home/Home";
 import "./app.css"
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Data from "./pages/Data/Data";
+import Data from "./pages/data/Data";
 
 function App() {
   return (
