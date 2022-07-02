@@ -32,6 +32,7 @@ try:
     cursor.close()
 except Exception as e:
     print(f"An error occurred: {e}")
+    exit(1)
 
 finally:
     if connection is not None:
