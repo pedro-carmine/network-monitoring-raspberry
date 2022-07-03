@@ -10,14 +10,17 @@ import CableIcon from '@mui/icons-material/Cable';
 import SensorsIcon from '@mui/icons-material/Sensors';
 import CancelIcon from '@mui/icons-material/Cancel';
 import HelpIcon from '@mui/icons-material/Help';
+import { ethernet, wireless } from "../../constants/interfaces";
 
 // exported functions that are used in the Home.jsx file too
 export function selectInterface(params) {
-    if (params.value === 'eth0') { // it only verifies unix interfaces such as eth0 and wlan0
+    const currentInterface = params.value
+
+    if (ethernet.includes(currentInterface)) { // it only verifies unix interfaces such as eth0 and wlan0
         return <CableIcon />
     }
 
-    else if (params.value === 'wlan0') {
+    else if (wireless.includes(currentInterface)) {
         return <SensorsIcon />
     }
 
