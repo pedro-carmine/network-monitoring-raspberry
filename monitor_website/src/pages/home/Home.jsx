@@ -160,7 +160,7 @@ const Home = () => {
         {field: 'interface', headerName: 'Interface', headerAlign: 'center', align: 'center', width: 75, renderCell: (params) => {
             return selectInterface(params)
         }},
-        {field: 'connection_status', headerName: 'Connection Status', headerAlign: 'center', width: 170, renderCell: (params) => {
+        {field: 'connection_status', headerName: 'Connection Status', headerAlign: 'center', width: 180, renderCell: (params) => {
             return <Chip variant="outlined" {... getChipProps(params)}/>
         }}
     ];
