@@ -11,7 +11,67 @@ import SensorsIcon from '@mui/icons-material/Sensors';
 import CancelIcon from '@mui/icons-material/Cancel';
 import HelpIcon from '@mui/icons-material/Help';
 
+// exported functions that are used in the Home.jsx file too
+export function selectInterface(params) {
+    if (params.value === 'eth0') { // it only verifies unix interfaces such as eth0 and wlan0
+        return <CableIcon />
+    }
+
+    else if (params.value === 'wlan0') {
+        return <SensorsIcon />
+    }
+
+    else {
+        return <HelpIcon />
+    }
+};
+
+export function getChipProps(params) {
+    if (params.value === 'connected') {
+        return {
+            icon: <CheckCircleIcon style={{ fill: green[500] }} />,
+            label: 'Connected',
+            style: {
+                borderColor: green[500]
+            }
+        };
+    }
+    else if (params.value === 'no_connection') {
+        return {
+            icon: <WarningIcon style={{ fill: amber[500] }} />,
+            label: 'No Connection',
+            style: {
+                borderColor: amber[500]
+            }
+        };
+    }
+    else if (params.value === 'disconnected') {
+        return {
+            icon: <CancelIcon style={{ fill: red[500] }} />,
+            label: 'Disconnected',
+            style: {
+                borderColor: red[500]
+            }
+        };
+    }
+    else {
+        return {
+            label: 'not defined'
+        }
+    }
+};
+
+export const getDate = (params) => {
+    let day = params.row.day;
+    let month = parseInt(params.row.month) - 1; // in the Date format, month uses index, so we need to subtract 1
+    let year = params.row.year;
+    return (
+        new Date(year, month, day)
+    );
+};
+
 const Data = () => {
+
     const [data, setData]  = useState([]);
 
     const getData = async () => {
@@ -29,64 +89,6 @@ const Data = () => {
     useEffect(() => {
         getData();
     }, []);
-
-    const getDate = (params) => {
-        let day = params.row.day;
-        let month = parseInt(params.row.month) - 1; // in the Date format, month uses index, so we need to subtract 1
-        let year = params.row.year;
-        return (
-            new Date(year, month, day)
-        );
-    };
-
-    function getChipProps(params) {
-        if (params.value === 'connected') {
-            return {
-                icon: <CheckCircleIcon style={{ fill: green[500] }} />,
-                label: 'Connected',
-                style: {
-                    borderColor: green[500]
-                }
-            };
-        }
-        else if (params.value === 'no_connection') {
-            return {
-                icon: <WarningIcon style={{ fill: amber[500] }} />,
-                label: 'No Connection',
-                style: {
-                    borderColor: amber[500]
-                }
-            };
-        }
-        else if (params.value === 'disconnected') {
-            return {
-                icon: <CancelIcon style={{ fill: red[500] }} />,
-                label: 'Disconnected',
-                style: {
-                    borderColor: red[500]
-                }
-            };
-        }
-        else {
-            return {
-                label: 'not defined'
-            }
-        }
-    };
-
-    function selectInterface(params) {
-        if (params.value === 'eth0') { // it only verifies unix interfaces such as eth0 and wlan0
-            return <SensorsIcon />
-        }
-
-        else if (params.value === 'wlan0') {
-            return <CableIcon />
-        }
-
-        else {
-            return <HelpIcon />
-        }
-    };
 
     const columns = [
         {field: 'id_pi', headerName: 'Hostname', headerAlign: 'center', width: 85},

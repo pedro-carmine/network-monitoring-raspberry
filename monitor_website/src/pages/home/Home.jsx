@@ -16,6 +16,7 @@ import Backdrop from "@mui/material/Backdrop";
 import CircularProgress from "@mui/material/CircularProgress";
 import version from "../../version.js";
 import { Button, Chip } from "@mui/material";
+import { selectInterface, getChipProps, getDate } from "../data/Data";
 
 
 const Home = () => {
@@ -31,41 +32,6 @@ const Home = () => {
     const [message, setMessage] = useState('');
     const [showDeviceList, setShowDeviceList] = useState(false);
     const [deviceData, setDeviceData] = useState([]);
-
-    function getChipProps(params) {
-        if (params.value === 'connected') {
-            return {
-                icon: <CheckCircleIcon style={{ fill: green[500] }} />,
-                label: 'Connected',
-                style: {
-                    borderColor: green[500]
-                }
-            };
-        }
-        else if (params.value === 'no_connection') {
-            return {
-                icon: <WarningIcon style={{ fill: amber[500] }} />,
-                label: 'No Connection',
-                style: {
-                    borderColor: amber[500]
-                }
-            };
-        }
-        else if (params.value === 'disconnected') {
-            return {
-                icon: <CancelIcon style={{ fill: red[500] }} />,
-                label: 'Disconnected',
-                style: {
-                    borderColor: red[500]
-                }
-            };
-        }
-        else {
-            return {
-                label: 'not defined'
-            }
-        }
-    };
 
 
     const handleClose = (event, reason) => {
@@ -116,15 +82,6 @@ const Home = () => {
         getData();
     }, []);
 
-    const getDate = (params) => {
-        let day = params.row.day;
-        let month = parseInt(params.row.month) - 1; // in the Date format, month uses index, so we need to subtract 1
-        let year = params.row.year;
-        return (
-            new Date(year, month, day)
-        );
-    };
-
     const getDeviceData = async (id) => {
         try {
             const response = await fetch(`/${version}/facts/${id}`);
@@ -141,19 +98,6 @@ const Home = () => {
         getDeviceData(id);
     };
 
-    function selectInterface(params) {
-        if (params.value === 'eth0') {
-            return <SensorsIcon />
-        }
-
-        else if (params.value === 'wlan0') {
-            return <CableIcon />
-        }
-
-        else {
-            return <HelpIcon />
-        }
-    };
 
     const columns = [
         {field: 'id_pi', headerName: 'Hostname', headerAlign: 'center', width: 100},
