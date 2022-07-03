@@ -7,6 +7,9 @@ import WarningIcon from "@material-ui/icons/Warning";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import CancelIcon from '@mui/icons-material/Cancel';
 import ListIcon from '@mui/icons-material/List';
+import SensorsIcon from '@mui/icons-material/Sensors';
+import HelpIcon from '@mui/icons-material/Help';
+import CableIcon from '@mui/icons-material/Cable';
 import MuiAlert from '@mui/material/Alert';
 import Snackbar from "@mui/material/Snackbar";
 import Backdrop from "@mui/material/Backdrop";
@@ -138,6 +141,20 @@ const Home = () => {
         getDeviceData(id);
     };
 
+    function selectInterface(params) {
+        if (params.value === 'eth0') {
+            return <SensorsIcon />
+        }
+
+        else if (params.value === 'wlan0') {
+            return <CableIcon />
+        }
+
+        else {
+            return <HelpIcon />
+        }
+    };
+
     const columns = [
         {field: 'id_pi', headerName: 'Hostname', headerAlign: 'center', width: 100},
         {field: 'ip', headerName: 'IP Address', headerAlign: 'center', width: 100},
@@ -196,6 +213,9 @@ const Home = () => {
         {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate},
         {field: 'hour', headerName: 'Time', headerAlign: 'center', width: 120},
         {field: 'ip', headerName: 'IP Address', headerAlign: 'center', width: 100},
+        {field: 'interface', headerName: 'Interface', headerAlign: 'center', align: 'center', width: 75, renderCell: (params) => {
+            return selectInterface(params)
+        }},
         {field: 'connection_status', headerName: 'Connection Status', headerAlign: 'center', width: 170, renderCell: (params) => {
             return <Chip variant="outlined" {... getChipProps(params)}/>
         }}

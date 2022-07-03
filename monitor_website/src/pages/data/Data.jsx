@@ -6,7 +6,10 @@ import version from "../../version.js";
 import { green, red, amber } from "@mui/material/colors";
 import WarningIcon from "@material-ui/icons/Warning";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
+import CableIcon from '@mui/icons-material/Cable';
+import SensorsIcon from '@mui/icons-material/Sensors';
 import CancelIcon from '@mui/icons-material/Cancel';
+import HelpIcon from '@mui/icons-material/Help';
 
 const Data = () => {
     const [data, setData]  = useState([]);
@@ -71,6 +74,20 @@ const Data = () => {
         }
     };
 
+    function selectInterface(params) {
+        if (params.value === 'eth0') { // it only verifies unix interfaces such as eth0 and wlan0
+            return <SensorsIcon />
+        }
+
+        else if (params.value === 'wlan0') {
+            return <CableIcon />
+        }
+
+        else {
+            return <HelpIcon />
+        }
+    };
+
     const columns = [
         {field: 'id_pi', headerName: 'Hostname', headerAlign: 'center', width: 85},
         {field: 'location', headerName: 'Location', headerAlign: 'center', width: 70},
@@ -78,7 +95,7 @@ const Data = () => {
         {field: 'min', headerName: 'Min', type: 'number', headerAlign: 'center', width: 65},
         {field: 'avg', headerName: 'Avg', type: 'number', headerAlign: 'center', width: 65},
         {field: 'packets_sent', headerName: 'Sent', type: 'number', headerAlign: 'center', width: 65},
-        {field: 'packets_received', headerName: 'Received', type: 'number', headerAlign: 'center', width: 70},
+        {field: 'packets_received', headerName: 'Received', type: 'number', headerAlign: 'center', width: 75},
         {
             field: 'packet_loss', 
             headerName: 'Packet Loss', 
@@ -92,7 +109,10 @@ const Data = () => {
         {field: 'date', headerName: 'Date', type: 'date', headerAlign: 'center', width: 120, valueGetter: getDate},
         {field: 'hour', headerName: 'Time', headerAlign: 'center', width: 120},
         {field: 'ip', headerName: 'IP Address', headerAlign: 'center', width: 100},
-        {field: 'connection_status', headerName: 'Connection Status', headerAlign: 'center', width: 170, renderCell: (params) => {
+        {field: 'interface', headerName: 'Interface', headerAlign: 'center', align: 'center', width: 75, renderCell: (params) => {
+            return selectInterface(params)
+        }},
+        {field: 'connection_status', headerName: 'Connection Status', headerAlign: 'center', align: 'center', width: 135, renderCell: (params) => {
             return <Chip variant="outlined" {... getChipProps(params)}/>
         }}
     ];
