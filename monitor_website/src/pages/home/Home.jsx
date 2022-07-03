@@ -1,15 +1,8 @@
 import "./home.css"
 import React, { useState, useEffect } from "react";
 import { DataGrid, GridToolbar, GridActionsCellItem } from "@mui/x-data-grid";
-import { green, red, amber } from "@mui/material/colors";
 import UpdateIcon from '@mui/icons-material/Update';
-import WarningIcon from "@material-ui/icons/Warning";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import CancelIcon from '@mui/icons-material/Cancel';
 import ListIcon from '@mui/icons-material/List';
-import SensorsIcon from '@mui/icons-material/Sensors';
-import HelpIcon from '@mui/icons-material/Help';
-import CableIcon from '@mui/icons-material/Cable';
 import MuiAlert from '@mui/material/Alert';
 import Snackbar from "@mui/material/Snackbar";
 import Backdrop from "@mui/material/Backdrop";
