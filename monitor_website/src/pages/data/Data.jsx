@@ -1,8 +1,9 @@
 import "./data.css"
+import { ethernet, wireless } from "../../constants/interfaces";
+import version from "../../version.js";
 import React, { useState, useEffect } from "react";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { Chip } from "@mui/material";
-import version from "../../version.js";
 import { green, red, amber } from "@mui/material/colors";
 import WarningIcon from "@material-ui/icons/Warning";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
@@ -10,7 +11,6 @@ import CableIcon from '@mui/icons-material/Cable';
 import SensorsIcon from '@mui/icons-material/Sensors';
 import CancelIcon from '@mui/icons-material/Cancel';
 import HelpIcon from '@mui/icons-material/Help';
-import { ethernet, wireless } from "../../constants/interfaces";
 
 // exported functions that are used in the Home.jsx file too
 export function selectInterface(params) {
