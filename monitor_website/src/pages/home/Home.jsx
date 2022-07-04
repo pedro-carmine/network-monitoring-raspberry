@@ -259,13 +259,19 @@ const Home = () => {
                     onChange={handleInput}
                     sx={{padding: '10px'}}
                     />
-                <Button 
-                    sx={{marginTop: '10px'}}
-                    onClick={() => {
-                        sendUpdateDestinationRequest(dest);
-                    }}
-                >
-                    Update</Button>
+                    <div>
+                        <Button
+                            onClick={() => {
+                                sendUpdateDestinationRequest(dest);
+                            }}
+                        >
+                        Update</Button>
+                        <Button
+                            onClick={() => {
+                                setShowInputPage(false);
+                            }}
+                        >Cancel</Button>
+                    </div>
                 </Paper>
             </Backdrop>
         </div>
