@@ -17,7 +17,7 @@ CREATE TABLE raspberry(
     model VARCHAR(100),
     location VARCHAR(100),
     ip VARCHAR(15),
-    destination_ping, VARCHAR(100) NOT NULL,
+    destination_ping VARCHAR(100) NOT NULL,
     PRIMARY KEY (id_pi),
     CONSTRAINT valid_ip_check CHECK (LENGTH(ip) < 16)
     -- can add more fields if useful
