@@ -27,6 +27,7 @@ try:
     ip = get_ip_address()
 except Exception as e:
     print(f"Check if the device is connected to a network and has an IP address\nError: {e}")
+    
 hostname = socket.gethostname()
 user = getpass.getuser()
 model = input("Raspberry Pi model: ")
