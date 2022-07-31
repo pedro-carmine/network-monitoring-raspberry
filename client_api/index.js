@@ -38,6 +38,16 @@ app.get('/monitor', (req, res) => {
     });
     
 })
+
+app.get(`/destination_ping/:ip`, async (req, res) => {
+    new_dest = req.params.ip;
+    console.log(new_dest);
+    os.execCommand(`python3 ../client_scripts/change_dest_ping.py ${new_dest}`).then(response => {
+        res.send(response);
+    }).catch(err => {
+        console.log(err);
+    });
+});
     
 app.listen(8081, () => {
     console.log("Server started on port 8081");

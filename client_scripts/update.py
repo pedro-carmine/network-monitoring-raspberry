@@ -26,8 +26,9 @@ def register_pi(main_db_cursor):
     model = result[0][1]
     location = result[0][2]
     ip = result[0][3]
+    destination_ping = result[0][4]
     
-    query = f"INSERT INTO raspberry (id_pi, model, location, ip) VALUES ('{id_pi}', '{model}', '{location}', '{ip}')"
+    query = f"INSERT INTO raspberry (id_pi, model, location, ip, destination_ping) VALUES ('{id_pi}', '{model}', '{location}', '{ip}', '{destination_ping}')"
     main_db_cursor.execute(query)
 
 def collect_all_data():
